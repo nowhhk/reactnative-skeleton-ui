@@ -7,11 +7,13 @@ import axios from "axios";
 import styled from "styled-components/native";
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState(null);
-  const [randomNumber, setRandomNumber] = useState(
-    Math.floor(movies && movies.length * Math.random())
+  const [loading, setLoading] = useState<boolean>(true);
+  const [movies, setMovies] = useState<string[] | null>(null);
+  const [randomNumber, setRandomNumber] = useState<number>(
+    Math.floor(20 * Math.random())
   );
+  console.log(randomNumber);
+  console.log(movies);
 
   const getMovies = async () => {
     const {
@@ -27,22 +29,14 @@ export default function App() {
 
   useEffect(getMovies, []);
 
-  const onPress = () => {
+  const onPress = (): void => {
     setRandomNumber(Math.floor(movies && movies.length * Math.random()));
   };
 
   return (
     <View style={styles.container}>
-      <Title> 랜덤 영화추천 😎 </Title>
-      {loading ? (
-        <Skeleton
-          style={{ marginBottom: 10 }}
-          width={280}
-          height={24}
-        ></Skeleton>
-      ) : (
-        <Name>{movies && movies[randomNumber].title}</Name>
-      )}
+      <Title> 랜덤 영화추천😎 </Title>
+
       {loading ? (
         <Skeleton variant="rect" style={{ marginBottom: 10 }}>
           <Image
@@ -57,17 +51,30 @@ export default function App() {
         ></Image>
       )}
       {loading ? (
+        <Skeleton
+          style={{ marginBottom: 10 }}
+          width={280}
+          height={24}
+        ></Skeleton>
+      ) : (
+        <Name>{movies && movies[randomNumber].title}</Name>
+      )}
+      {loading ? (
         <Skeleton style={{ marginBottom: 10 }} width={100}></Skeleton>
       ) : (
         <Desc style={{ marginBottom: 10 }}>
-          The Rating is {movies && movies[randomNumber].rating}
+          The Rating is <Data>{movies && movies[randomNumber].rating}</Data>
         </Desc>
       )}
       {loading ? (
         <Skeleton style={{ marginBottom: 10 }} width={200}></Skeleton>
       ) : (
         <Desc style={{ marginBottom: 10 }}>
-          The Genres is {movies && movies[randomNumber].genres}
+          The Genres is
+          {movies &&
+            movies[randomNumber].genres.map((genres: string, idx: number) => (
+              <Data key={idx}> {genres}</Data>
+            ))}
         </Desc>
       )}
       <TouchableOpacity onPress={onPress}>
@@ -109,7 +116,6 @@ const Desc = styled.Text`
   font-size: 18px;
   font-weight: 500;
   color: #f3e1e1;
-  /* text-transform: uppercase; */
 `;
 
 const Name = styled.Text`
@@ -117,4 +123,10 @@ const Name = styled.Text`
   font-weight: 700;
   margin-bottom: 10px;
   color: #f3e1e1;
+`;
+
+const Data = styled.Text`
+  /* color: #f69e7b; */
+  color: yellow;
+  font-weight: 700;
 `;

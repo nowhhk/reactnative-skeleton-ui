@@ -61,24 +61,6 @@ const Skeleton = ({
   }, [animation]);
 
   return (
-    // <Skeletons
-    //   as={Animated.View}
-    //   style={[
-    //     { width },
-    //     { height },
-    //     { backgroundColor: color },
-    //     handleVariant(variant),
-    //     animation ? { opacity } : undefined,
-    //     children
-    //       ? {
-    //           height: children.height,
-    //           width: children.width,
-    //         }
-    //       : undefined,
-    //     style,
-    //   ]}>
-    //   {children}
-    // </Skeletons>
     <Skeletons
       as={Animated.View}
       style={[
