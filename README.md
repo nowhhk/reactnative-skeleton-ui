@@ -19,7 +19,7 @@ you can customize component's style and dimension by passing these props.
 
 ```{
   loading ? (
-    <Skeleton variant="rect" width={200} height={10} />
+    <Skeleton variant="rect" width={200} height={10} style={{marginBottom: 10}} />
   ) : (
     <View>{props.content}</View>
   );
