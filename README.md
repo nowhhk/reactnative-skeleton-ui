@@ -30,21 +30,4 @@ you can customize component's style and dimension by passing these props.
  *** It will display the Skeleton until the loading state becomes false.
  
 
-## Inferring dimensions
-
-If you pass a component between Skeleton as children, it will infer its width and height from them.
-
-```
-<Skeleton>
-   <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</Text>
-</Skeleton>
-```
-
-```
-<Skeleton>
-   <Child />
-</Skeleton>
-```
-*** Its height and width will be equal to the children component's those.
-
 
