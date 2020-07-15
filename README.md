@@ -33,7 +33,7 @@ you can customize component's style and dimension by passing these props.
 ```
 {
   loading ? (
-    <Skeleton variant="rect" width={200} height={100}/>
+    <Skeleton variant="rect" width={200} height="1.2em"/>
   ) : (
     <View>{props.content}</View>
   );
