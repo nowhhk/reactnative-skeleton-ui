@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 
 import Skeleton from "./Skeleton";
@@ -8,14 +15,14 @@ import styled from "styled-components/native";
 
 export default function App() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [movies, setMovies] = useState<string[] | null>(null);
+  const [movies, setMovies] = useState<Object[] | undefined>(undefined);
   const [randomNumber, setRandomNumber] = useState<number>(
     Math.floor(20 * Math.random())
   );
-  console.log(randomNumber);
+
   console.log(movies);
 
-  const getMovies = async () => {
+  const getMovies = async (): Promise<void> => {
     const {
       data: {
         data: { movies },
@@ -27,20 +34,25 @@ export default function App() {
     setMovies(movies);
   };
 
-  useEffect(getMovies, []);
+  useEffect(() => {
+    getMovies();
+  }, []);
 
-  const onPress = (): void => {
-    setRandomNumber(Math.floor(movies && movies.length * Math.random()));
+  const onPress = (event: GestureResponderEvent): void => {
+    if (movies && movies.length > 0) {
+      setRandomNumber(Math.floor(movies.length * Math.random()));
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Title> 랜덤 영화추천😎 </Title>
+      <Title> 랜덤 영화😎 </Title>
 
       {loading ? (
-        <Skeleton variant="rect" style={{ marginBottom: 10 }}>
+        <Skeleton shape="rect" style={{ marginBottom: 10 }}>
+          {/* <Div></Div> */}
           <Image
-            style={{ height: 400, width: 300 }}
+            style={{ height: 400, width: 300, marginBottom: 10 }}
             source={movies && { uri: movies[randomNumber].medium_cover_image }}
           ></Image>
         </Skeleton>
@@ -50,6 +62,7 @@ export default function App() {
           source={movies && { uri: movies[randomNumber].medium_cover_image }}
         ></Image>
       )}
+
       {loading ? (
         <Skeleton
           style={{ marginBottom: 10 }}
@@ -80,6 +93,7 @@ export default function App() {
       <TouchableOpacity onPress={onPress}>
         <More>ONE MORE</More>
       </TouchableOpacity>
+
       <StatusBar style="auto" />
     </View>
   );
@@ -130,3 +144,9 @@ const Data = styled.Text`
   color: yellow;
   font-weight: 700;
 `;
+
+const Div = styled.View`
+  width: 100;
+  background-color: red;
+`;
+

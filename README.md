@@ -14,30 +14,28 @@ it can be customized by passing these props.
 | color     |           | string                     | `#e7e7e7` |
 | animation |           | boolean                    | `true`    |
 | style     |           | ViewStyle                  |           |
-| children  |           | ReactNode                  |           |
+| children  |           | ReactElement               |           |
 
 ## Usage
 
 ```
 <Skeleton
-        shape="circle"
-        width={40}
-        height={40}
-        color="lightgray"
-        animation={false}
-        style={{ marginBottom: 30 }}
-      />
+    shape="circle"
+    width={40}
+    height={40}
+    color="lightgray"
+    animation={false}
+    style={{ marginBottom: 30 }}
+  />
 ```
 
 ## Example of Using Skeleton
 
 ```
 {
-  loading ? (
-    <Skeleton shape="rect" width={200} height="1.2em"/>
-  ) : (
-    <View>{props.data}</View>
-  );
+  loading
+    ? <Skeleton shape="rect" width={200} height={100}/>
+    : <View>{props.data}</View>
 }
 ```
 
