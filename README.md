@@ -1,4 +1,9 @@
-# Skeleton
+### Movie App
+
+- expo(react-native), react-navigation
+- Consuming public REST APIs with Axios
+
+# Skeleton Component
 
 Display 'mockups' of text, images or other content elements, while data is being loaded.
 
@@ -9,10 +14,11 @@ it can be customized by passing these props.
 |           | necessary | types                      | default   |
 | --------- | --------- | -------------------------- | --------- |
 | shape     |           | "text" , "circle" , "rect" | `"text"`  |
-| width     |           | number, string             | `"100%"`  |
-| height    |           | number, string             | `12`      |
+| width     |           | number, string             |           |
+| height    |           | number, string             |           |
 | color     |           | string                     | `#e7e7e7` |
 | animation |           | boolean                    | `true`    |
+| isLoading |           | boolean                    | `true`    |
 | style     |           | ViewStyle                  |           |
 | children  |           | ReactElement               |           |
 
@@ -27,16 +33,6 @@ it can be customized by passing these props.
     animation={false}
     style={{ marginBottom: 30 }}
   />
-```
-
-## Example of Using Skeleton
-
-```
-{
-  loading
-    ? <Skeleton shape="rect" width={200} height={100}/>
-    : <View>{props.data}</View>
-}
 ```
 
 ## Inferring dimensions
@@ -54,3 +50,32 @@ If you pass a component between Skeleton as children, it will infer its width an
    <Child />
 </Skeleton>
 ```
+
+## State detection
+
+```
+const [isLoading, setIsLoading] = useState(true);
+
+return (
+    ...
+
+    <Skeleton isLoading={isLoading}>
+        <View>{props.data}</View>
+    </Skeleton>
+
+    ...
+)
+
+```
+
+If the state becomes false, it will show the children component.
+
+```
+{
+  isLoading
+    ? <Skeleton shape="rect" width={200} height={100}/>
+    : <View>{props.data}</View>
+}
+```
+
+You can also use it like this
