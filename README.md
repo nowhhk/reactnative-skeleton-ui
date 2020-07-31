@@ -24,7 +24,7 @@ it can be customized by passing these props.
 
 ## Usage
 
-```
+```js
 <Skeleton
     shape="circle"
     width={40}
@@ -39,7 +39,7 @@ it can be customized by passing these props.
 
 If you pass a component between Skeleton as children, it will infer its width and height from them.
 
-```
+```js
 <Skeleton>
    <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</Text>
 </Skeleton>
@@ -53,7 +53,7 @@ If you pass a component between Skeleton as children, it will infer its width an
 
 ## State detection by isLoading prop
 
-```
+```js
 const [isLoading, setIsLoading] = useState(true);
 
 return (
@@ -71,7 +71,7 @@ return (
 If the state becomes false, it will show the children component.
 
 
-```
+```js
 {
   isLoading
     ? <Skeleton shape="rect" width={200} height={100}/>
