@@ -1,7 +1,7 @@
-### Movie App
+### A simple movie app using skeleton component
 
-- expo(react-native), react-navigation
-- Consuming public REST APIs with Axios
+- expo-cli, react-navigation
+- consuming public REST APIs with Axios
 
 # Skeleton Component
 
