@@ -51,7 +51,7 @@ If you pass a component between Skeleton as children, it will infer its width an
 </Skeleton>
 ```
 
-## State detection
+## State detection by isLoading prop
 
 ```
 const [isLoading, setIsLoading] = useState(true);
@@ -70,6 +70,7 @@ return (
 
 If the state becomes false, it will show the children component.
 
+
 ```
 {
   isLoading
@@ -78,4 +79,4 @@ If the state becomes false, it will show the children component.
 }
 ```
 
-You can also use it like this
+Of course, You can also use it like this
