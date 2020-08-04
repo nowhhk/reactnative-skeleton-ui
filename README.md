@@ -1,7 +1,6 @@
-### A simple movie app using skeleton component
 
 - expo-cli, react-navigation
-- consuming public REST APIs with Axios
+- consuming public REST APIs with axios
 
 # Skeleton Component
 
@@ -45,7 +44,7 @@ If you pass a component between Skeleton as children, it will infer its width an
 </Skeleton>
 ```
 
-```
+```js
 <Skeleton>
    <Child />
 </Skeleton>
