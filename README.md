@@ -1,7 +1,4 @@
 
-- expo-cli, react-navigation
-- consuming public REST APIs with axios
-
 # Skeleton Component
 
 Display 'mockups' of text, images or other content elements, while data is being loaded.
@@ -78,4 +75,4 @@ If the state becomes false, it will show the children component.
 }
 ```
 
-Of course, You can also use it like this
+Of course, You can also use it like this.
